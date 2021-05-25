@@ -8,27 +8,26 @@ import {
 } from 'react-native';
 
 const App = () => {
-  const [valor, setValor] = useState('0');
+  const [valor, setValor] = useState<number>(1);
+  const calcular = () => {
+    setValor(valor * 4);
+  };
   return (
     <View style={styles.mainContainer}>
       <Text>Polski converter 1.0 </Text>
-      <TextInput style={styles.input} onChangeText={setValor} value={valor} />
-      <TextInput
-        style={styles.input}
-        onChangeText={() => console.log('hola')}
-        value={valor}
-      />
-      <TouchableOpacity onPress={() => console.log('hola')} style={styles.boton}>
-        <Text>convertir</Text>
+      <TextInput style={styles.input} />
+      <TextInput style={styles.input} />
+      <TouchableOpacity onPress={calcular} style={styles.boton}>
+        <Text> {valor}</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  boton:{
-    padding:20,
-    backgroundColor:'blue'
+  boton: {
+    padding: 20,
+    backgroundColor: 'blue',
   },
   mainContainer: {
     flex: 1,
